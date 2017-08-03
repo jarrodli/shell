@@ -7,20 +7,23 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define TRUE 1
 #define FALSE 0
 
 int main(int argc, char *argv[]) {
-	int sorted = TRUE;
-	int s = argc - 1; 
+	//int s = argc; 
 	int arr[100];
+	int sorted = TRUE;	
 	
-	for (int i = 1; i < argc; i++) {
+	for (int i = 0; i < argc; i++) {
 		arr[i] = atoi(argv[i]);
 	}
+	
 	do {
-		for (int i = 0; i < s; i++) {
+		sorted = TRUE;
+		for (int i = 0; i < argc - 1; i++) {
  			if (arr[i] > arr[i+1]) {
 				int x = arr[i];
 				arr[i] = arr[i+1];		
@@ -30,8 +33,10 @@ int main(int argc, char *argv[]) {
 		}	
 	} while (!sorted);
 
-	for (int i = 0; i < s; i++) {
+	for (int i = 0; i < argc; i++) {
 		printf("%d, ", arr[i]);	
 	}
+	printf("\n");
+
 	return EXIT_SUCCESS; 
 }
