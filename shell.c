@@ -30,12 +30,12 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	} 
 	if (pid == 0) {
-		create("child\n");
+		args = { "./bubbleSort", "0", "1", "3", "2" }
+		execv(args[0], args);
 		exit(0);
 	}
 	
-	create("parent\n");
+	printf("waiting for child process to complete");
 	wait(NULL);
-	printf("parent task completed\n");
 	return 0;
 }
